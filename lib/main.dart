@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Planet',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(),

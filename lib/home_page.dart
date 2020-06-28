@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 import './data.dart';
 
-const APP_MESSAGE =
+const kAppMessage =
     "Welcome to Flutter Planet - the app that commits to save the planet! Please make a commitment and share with the world!";
 
-const APP_BAR_HEIGHT = 350.0;
+const kAppbarHeight = 350.0;
+const kHeaderStyle = TextStyle(color: kTextColour, fontSize: 20.0);
+const kTextColour = Color.fromARGB(230, 10, 32, 47);
 
 class HomePage extends StatelessWidget {
   final List<DataRow> userTableRows = commitmentsByUser.map((e) {
@@ -36,14 +38,25 @@ class HomePage extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            backgroundColor: Colors.white,
             title: Text(
               "Flutter Planet",
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.blueGrey[700], fontSize: 40.0),
+              style: TextStyle(
+                color: kTextColour,
+                fontSize: 40.0,
+                letterSpacing: 2.0,
+                shadows: List.filled(
+                    1,
+                    Shadow(
+                        color: Colors.blueGrey[900],
+                        blurRadius: 10.0,
+                        offset: Offset(2, 3))),
+              ),
             ),
             pinned: true,
             centerTitle: true,
-            expandedHeight: APP_BAR_HEIGHT,
+            expandedHeight: kAppbarHeight,
             flexibleSpace: AppBarContent(commitmentsCount: commitmentsCount),
           ),
           SliverList(
@@ -58,13 +71,22 @@ class HomePage extends StatelessWidget {
                   child: DataTable(
                     columns: [
                       DataColumn(
-                        label: Text("Name"),
+                        label: Text(
+                          "Name",
+                          style: kHeaderStyle,
+                        ),
                       ),
                       DataColumn(
-                        label: Text("Location"),
+                        label: Text(
+                          "Location",
+                          style: kHeaderStyle,
+                        ),
                       ),
                       DataColumn(
-                        label: Text("I Commit"),
+                        label: Text(
+                          "I Commit",
+                          style: kHeaderStyle,
+                        ),
                       ),
                     ],
                     rows: userTableRows,
@@ -79,12 +101,23 @@ class HomePage extends StatelessWidget {
                   child: DataTable(
                     columns: [
                       DataColumn(
-                        label: Text("Commitment"),
+                        label: Text(
+                          "Commitment",
+                          style: kHeaderStyle,
+                        ),
                       ),
                       DataColumn(
-                        label: Text("Tag"),
+                        label: Text(
+                          "Tag",
+                          style: kHeaderStyle,
+                        ),
                       ),
-                      DataColumn(label: Text("# People"), numeric: true),
+                      DataColumn(
+                          label: Text(
+                            "# People",
+                            style: kHeaderStyle,
+                          ),
+                          numeric: true),
                     ],
                     rows: commitmentTableRows,
                   ),
@@ -107,7 +140,7 @@ class AppBarContent extends StatelessWidget {
     return LayoutBuilder(
       builder: (_, BoxConstraints constraints) {
         double top = constraints.biggest.height;
-        double opacity = top / APP_BAR_HEIGHT;
+        double opacity = top / kAppbarHeight;
         opacity = opacity > 1 ? 1 : opacity < 0.2 ? 0.0 : opacity;
         return Opacity(
           opacity: opacity,
@@ -118,7 +151,7 @@ class AppBarContent extends StatelessWidget {
                   image: AssetImage("./images/planet.jpg"),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                      Color.fromRGBO(255, 255, 255, 0.3), BlendMode.lighten),
+                      Color.fromRGBO(255, 255, 255, 0.4), BlendMode.lighten),
                 ),
               ),
               child: Padding(
@@ -130,19 +163,21 @@ class AppBarContent extends StatelessWidget {
                       "$commitmentsCount Total Commitments",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          color: Colors.blueGrey[700],
-                          fontSize: opacity * 30.0),
+                        color: kTextColour,
+                        fontSize: opacity * 30.0,
+                      ),
                     ),
                     SizedBox(
                       height: 20.0,
                     ),
                     Text(
-                      APP_MESSAGE,
+                      kAppMessage,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: opacity * 23.0,
-                          color: Colors.blueGrey[900],
-                          fontWeight: FontWeight.w300),
+                          color: kTextColour,
+                          wordSpacing: 2.0,
+                          fontWeight: FontWeight.w400),
                     ),
                     SizedBox(
                       height: 20.0,
@@ -153,14 +188,17 @@ class AppBarContent extends StatelessWidget {
                         Text(
                           "Please Login   ",
                           style: TextStyle(
-                              color: Colors.white,
+                              color: kTextColour,
                               fontSize: opacity * 15.0,
                               fontWeight: FontWeight.bold),
                         ),
                         RaisedButton(
                             onPressed: () {},
-                            child: Text("Google"),
-                            color: Color.fromRGBO(25, 200, 100, opacity)),
+                            child: Text(
+                              "Google",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            color: Color.fromRGBO(37, 122, 20, opacity)),
                       ],
                     ),
                   ],
