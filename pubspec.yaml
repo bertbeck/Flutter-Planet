@@ -13,6 +13,8 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.3
+  firebase_auth: ^0.16.1
+  google_sign_in: ^4.5.1
 
 dev_dependencies:
   flutter_test:
@@ -23,6 +25,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/
     - images/planet.jpg
     - images/google-logo.png
 
