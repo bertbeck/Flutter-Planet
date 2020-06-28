@@ -84,7 +84,9 @@ class _Page3State extends State<Page3> {
                   ),
         ),
        RaisedButton(
-         onPressed: (){},
+         onPressed: (){
+           Navigator.pushNamed(context, '/p2');
+         },
           child: Text('Add Video',style: TextStyle(color: Colors.white),),
           color: Theme.of(context).accentColor,
           )

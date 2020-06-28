@@ -63,7 +63,9 @@ class _Page4State extends State<Page4> {
             )
           ),
            Padding(padding: EdgeInsets.only(right: 20 , left: 40)),
-            RaisedButton(onPressed: (){},
+            RaisedButton(onPressed: (){
+              Navigator.pushNamed(context, '/p3');
+            },
             child: Text('Add',style: TextStyle(color: Colors.white),),
             color: Colors.black),
         ],
