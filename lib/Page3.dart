@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_planet/Page3.dart';
+import 'package:flutter_planet/Page4.dart';
 
-class Page5 extends StatefulWidget {
+class Page3 extends StatefulWidget {
   @override
-  _Page5State createState() => _Page5State();
+  _Page3State createState() => _Page3State();
 }
 
-class _Page5State extends State<Page5> {
-   List<String> _locations = ['one', 'two', 'three'];
+class _Page3State extends State<Page3> {
+  List<String> _locations = ['one', 'two', 'three'];
    TextEditingController descriptionController = TextEditingController();
    String _selectedLocations;
 
@@ -16,7 +16,7 @@ class _Page5State extends State<Page5> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Page 5'),
+        title: Text('Page 3'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -64,17 +64,37 @@ class _Page5State extends State<Page5> {
             )
           ),
            Padding(padding: EdgeInsets.only(right: 20 , left: 40)),
-            RaisedButton(onPressed: (){ Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => Page3()),
-  );},
+            RaisedButton(onPressed: (){},
             child: Text('Add',style: TextStyle(color: Colors.white),),
             color: Colors.black),
         ],
       ),
          ),
-      ]
-      )
+        Container(
+           padding: EdgeInsets.only(left: 20 , right: 20 , top: 20 ),
+           height: 250,
+           width: 350,
+            child: TextField(
+                    controller: descriptionController,
+                    decoration: InputDecoration(
+                      border: new OutlineInputBorder(
+                    borderSide: new BorderSide(color: Colors.black)),
+                    ),
+                     keyboardType: TextInputType.multiline,
+                      maxLines: 8
+                  ),
+        ),
+       RaisedButton(
+         onPressed: (){
+            Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Page4()));
+         },
+          child: Text('Add Video',style: TextStyle(color: Colors.white),),
+          color: Theme.of(context).accentColor,
+          )
+      ],
+      ),
       )
     );
   }
