@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "712072373952",
+    "firebase_url": "https://flutter-planet.firebaseio.com",
+    "project_id": "flutter-planet",
+    "storage_bucket": "flutter-planet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712072373952:android:68672e768ed9307594af25",
+        "android_client_info": {
+          "package_name": "com.tenfins.flutterplanet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712072373952-88lesvqbqekbn240c274uv2dt6gjjebk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf-HEWQfwKQUhfFQCXckE_4P2MFt8jWVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "712072373952-88lesvqbqekbn240c274uv2dt6gjjebk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "712072373952-11fa5ack6ubbdjsqjnc8hcu7junr4dos.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tenfins.flutterplanet"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
