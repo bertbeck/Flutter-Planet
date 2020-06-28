@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:712072373952:android:68672e768ed9307594af25",
+        "mobilesdk_app_id": "1:712072373952:android:3d439df99007b5db94af25",
         "android_client_info": {
           "package_name": "com.tenfins.flutterplanet"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "712072373952-8f0ktmg9tvn430ovuisq7frt21je3599.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tenfins.flutterplanet",
+            "certificate_hash": "bc3998a1ab0f6cef7c3dacdf7c2d1217f4470e4c"
+          }
+        },
         {
           "client_id": "712072373952-88lesvqbqekbn240c274uv2dt6gjjebk.apps.googleusercontent.com",
           "client_type": 3
@@ -32,10 +40,10 @@
               "client_type": 3
             },
             {
-              "client_id": "712072373952-11fa5ack6ubbdjsqjnc8hcu7junr4dos.apps.googleusercontent.com",
+              "client_id": "712072373952-rcrb51q1rf761msh9876n1t3l4safar9.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.tenfins.flutterplanet"
+                "bundle_id": "new"
               }
             }
           ]
