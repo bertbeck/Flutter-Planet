@@ -5,4 +5,5 @@ const kAppMessage =
 
 const kAppbarHeight = 350.0;
 const kHeaderStyle = TextStyle(color: kTextColour, fontSize: 20.0);
+const kDataCellStyle = TextStyle(color: kTextColour, fontSize: 15.0);
 const kTextColour = Color.fromARGB(230, 10, 32, 47);

@@ -1,38 +1,54 @@
 import 'package:flutter/material.dart';
 
 import './data.dart';
+import 'constants.dart';
 
-const kAppMessage =
-    "Welcome to Flutter Planet - the app that commits to save the planet! Please make a commitment and share with the world!";
-
-const kAppbarHeight = 350.0;
-const kHeaderStyle = TextStyle(color: kTextColour, fontSize: 20.0);
-const kTextColour = Color.fromARGB(230, 10, 32, 47);
+bool loggedIn = false;
 
 class HomePage extends StatelessWidget {
   final List<DataRow> userTableRows = commitmentsByUser.map((e) {
     return DataRow(
       cells: [
-        DataCell(Text(e["name"]), onTap: () {
+        DataCell(
+            Text(
+              e["name"],
+              style: kDataCellStyle,
+            ), onTap: () {
           //Page2(e["name"])
         }),
-        DataCell(Text(e["location"])),
-        DataCell(Text(e["commit"]))
+        DataCell(Text(
+          e["location"],
+          style: kDataCellStyle,
+        )),
+        DataCell(Text(
+          e["commit"],
+          style: kDataCellStyle,
+        ))
       ],
     );
   }).toList();
   final List<DataRow> commitmentTableRows = commitmentsByTag.map((e) {
     return DataRow(
       cells: [
-        DataCell(Text(e["commit"])),
-        DataCell(Text(e["tag"])),
-        DataCell(Text(e["count"].toString()))
+        DataCell(Text(
+          e["commit"],
+          style: kDataCellStyle,
+        )),
+        DataCell(Text(
+          e["tag"],
+          style: kDataCellStyle,
+        )),
+        DataCell(Text(
+          e["count"].toString(),
+          style: kDataCellStyle,
+        ))
       ],
     );
   }).toList();
   @override
   Widget build(BuildContext context) {
     int commitmentsCount = 256;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -58,6 +74,19 @@ class HomePage extends StatelessWidget {
             centerTitle: true,
             expandedHeight: kAppbarHeight,
             flexibleSpace: AppBarContent(commitmentsCount: commitmentsCount),
+            actions: loggedIn == true
+                ? [
+                    IconButton(
+                      onPressed: () {
+                        //logout if logged in
+                      },
+                      icon: Icon(
+                        Icons.exit_to_app,
+                        color: Colors.green,
+                      ),
+                    )
+                  ]
+                : null,
           ),
           SliverList(
             delegate: SliverChildListDelegate(
@@ -151,7 +180,7 @@ class AppBarContent extends StatelessWidget {
                   image: AssetImage("./images/planet.jpg"),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                      Color.fromRGBO(255, 255, 255, 0.4), BlendMode.lighten),
+                      Color.fromRGBO(255, 255, 255, 0.7), BlendMode.lighten),
                 ),
               ),
               child: Padding(
@@ -182,25 +211,45 @@ class AppBarContent extends StatelessWidget {
                     SizedBox(
                       height: 20.0,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Please Login   ",
-                          style: TextStyle(
-                              color: kTextColour,
-                              fontSize: opacity * 15.0,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        RaisedButton(
+                    loggedIn == true
+                        ? RaisedButton(
                             onPressed: () {},
                             child: Text(
-                              "Google",
+                              "My Profile",
                               style: TextStyle(color: Colors.white),
                             ),
-                            color: Color.fromRGBO(37, 122, 20, opacity)),
-                      ],
-                    ),
+                            color: Color.fromRGBO(37, 122, 20, opacity))
+                        : Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 120.0),
+                            child: RaisedButton(
+                              padding: EdgeInsets.symmetric(vertical: 0),
+                              onPressed: () {},
+                              color: Color.fromRGBO(37, 122, 20, 1),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "Please Login   ",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: opacity * 15.0,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  Container(
+                                    color: Colors.white,
+                                    child: Image.asset(
+                                      "images/google-logo.png",
+                                      height: 40.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                   ],
                 ),
               ),
