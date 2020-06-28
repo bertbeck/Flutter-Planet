@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:flutter_planet/Page5.dart';
+=======
+>>>>>>> dev
 
 class Page4 extends StatefulWidget {
   @override
@@ -7,7 +10,11 @@ class Page4 extends StatefulWidget {
 }
 
 class _Page4State extends State<Page4> {
+<<<<<<< HEAD
    List<String> _locations = ['one', 'two', 'three'];
+=======
+  List<String> _locations = ['one', 'two', 'three'];
+>>>>>>> dev
    TextEditingController descriptionController = TextEditingController();
    String _selectedLocations;
 
@@ -64,10 +71,14 @@ class _Page4State extends State<Page4> {
             )
           ),
            Padding(padding: EdgeInsets.only(right: 20 , left: 40)),
+<<<<<<< HEAD
             RaisedButton(onPressed: (){ Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => Page5()),
   );},
+=======
+            RaisedButton(onPressed: (){},
+>>>>>>> dev
             child: Text('Add',style: TextStyle(color: Colors.white),),
             color: Colors.black),
         ],

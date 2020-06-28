@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:flutter_planet/Page3.dart';
+=======
+>>>>>>> dev
 
 class Page5 extends StatefulWidget {
   @override
@@ -64,10 +67,14 @@ class _Page5State extends State<Page5> {
             )
           ),
            Padding(padding: EdgeInsets.only(right: 20 , left: 40)),
+<<<<<<< HEAD
             RaisedButton(onPressed: (){ Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => Page3()),
   );},
+=======
+            RaisedButton(onPressed: (){},
+>>>>>>> dev
             child: Text('Add',style: TextStyle(color: Colors.white),),
             color: Colors.black),
         ],
