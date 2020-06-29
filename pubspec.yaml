@@ -21,6 +21,16 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.7.5
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  adaptive_icon_background: "#0A4C0F"
+  adaptive_icon_foreground: "assets/icon/icon_rounded.png"
+
+
 
 flutter:
 
@@ -30,6 +40,7 @@ flutter:
     - assets/
     - images/planet.jpg
     - images/google-logo.png
+    - assets/icon/icon.png
 
   # fonts:
   #   - family: Schyler
