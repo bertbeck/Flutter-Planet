@@ -11,7 +11,7 @@ const kAppMessage = //"";
 const kAppbarHeight = 350.0;
 const kHeaderStyle = TextStyle(color: kTextColour, fontSize: 20.0);
 const kTextColour = Color.fromARGB(230, 10, 32, 47);
-bool loggedIn = false;
+bool loggedIn = true;
 
 class HomePage extends StatelessWidget {
 
@@ -136,13 +136,23 @@ Jignesh Patel, India, commits to eating more local food and shopping for local g
                     SizedBox(
                       height: 20.0,
                     ), 
-                        RaisedButton(
+        loggedIn != true ? RaisedButton(
                             onPressed: () {},
                             child: Text(
                               "Google Login",
                               style: TextStyle(color: Colors.white),
                             ),
-                            color: Color.fromRGBO(37, 122, 20, 1)),
+                            color: Color.fromRGBO(37, 122, 20, 1))
+                          :
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical:5),
+                            child: Center(
+                              child: Text(
+                                  "Recent Commitments",
+                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green[400]),
+                                ),
+                            ),
+                          ),
 
 ScrollingListview(commiterList),                            
                                                        
