@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_planet/models/shoutout.dart';
+import 'package:flutter_planet/sign_in.dart';
 
 import '../utils.dart';
 
@@ -16,7 +17,7 @@ class _Page2State extends State<Page2> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Bert's Page"),
+          title: Text("$name's Page"),
           backgroundColor: Colors.green,
           bottom: TabBar(
             tabs: [

@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.green[500],
-                  fontSize: 40.0,
+                  fontSize: 30.0,
                   letterSpacing: 2.0,
                   shadows: List.filled(
                       1,
@@ -88,6 +88,7 @@ class _HomePageState extends State<HomePage> {
                       signIn();
                     },
                     child: Container(
+                      margin: EdgeInsets.only(right: 5),
                       height: 30.0,
                       width: 30,
                       child: Image.asset("images/google-logo.png"),
