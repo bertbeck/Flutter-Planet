@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Page4.dart';
 class Page3 extends StatefulWidget {
   @override
   _Page3State createState() => _Page3State();
@@ -84,9 +85,13 @@ class _Page3State extends State<Page3> {
                   ),
         ),
        RaisedButton(
-         onPressed: (){},
+         onPressed: (){
+            Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Page4()));
+         },
           child: Text('Add Video',style: TextStyle(color: Colors.white),),
-          color: Theme.of(context).accentColor,
+          color: Colors.black,
           )
       ],
       ),

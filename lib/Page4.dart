@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Page5.dart';
+
 class Page4 extends StatefulWidget {
   @override
   _Page4State createState() => _Page4State();
@@ -63,7 +65,10 @@ class _Page4State extends State<Page4> {
             )
           ),
            Padding(padding: EdgeInsets.only(right: 20 , left: 40)),
-            RaisedButton(onPressed: (){},
+            RaisedButton(onPressed: (){ Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => Page5()),
+  );},
             child: Text('Add',style: TextStyle(color: Colors.white),),
             color: Colors.black),
         ],
