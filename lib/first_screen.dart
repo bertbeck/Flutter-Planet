@@ -21,7 +21,7 @@ class FirstScreen extends StatelessWidget {
             children: <Widget>[
               CircleAvatar(
                 backgroundImage: NetworkImage(
-                  imageUrl,
+                  imageUrl ?? 'https://www.google.com/imgres?imgurl=http%3A%2F%2Ficon-library.com%2Fimages%2Fprofile-icon-white%2Fprofile-icon-white-20.jpg&imgrefurl=http%3A%2F%2Ficon-library.com%2Ficon%2Fprofile-icon-white-2.html&tbnid=c2TWODlSizIWPM&vet=10CEMQMygdahcKEwiYhKu1-qXqAhUAAAAAHQAAAAAQCQ..i&docid=sdc5n48YVvpQqM&w=800&h=800&q=user%20profile%20pic&ved=0CEMQMygdahcKEwiYhKu1-qXqAhUAAAAAHQAAAAAQCQ',
                 ),
                 radius: 60,
                 backgroundColor: Colors.transparent,
@@ -35,7 +35,7 @@ class FirstScreen extends StatelessWidget {
                     color: Colors.black54),
               ),
               Text(
-                name,
+                name ?? '',
                 style: TextStyle(
                     fontSize: 25,
                     color: Colors.deepPurple,
@@ -50,7 +50,7 @@ class FirstScreen extends StatelessWidget {
                     color: Colors.black54),
               ),
               Text(
-                email,
+                email ?? '',
                 style: TextStyle(
                     fontSize: 25,
                     color: Colors.deepPurple,
