@@ -8,6 +8,11 @@ String name;
 String email;
 String imageUrl;
 
+Future<bool> hasAuth() async{
+  final FirebaseUser currentUser = await _auth.currentUser();
+  return currentUser != null;
+}
+
 Future<String> signInWithGoogle() async {
   final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
   final GoogleSignInAuthentication googleSignInAuthentication =
@@ -44,8 +49,8 @@ Future<String> signInWithGoogle() async {
   return 'signInWithGoogle succeeded: $user';
 }
 
-void signOutGoogle() async {
+Future<void> signOutGoogle() async {
   await googleSignIn.signOut();
-
+  await _auth.signOut();
   print("User Sign Out");
 }

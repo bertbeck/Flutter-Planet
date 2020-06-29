@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_planet/sign_in.dart';
 import 'package:flutter_planet/widgets/ScrollingListview.dart';
 
 import 'constants.dart';
-
-bool loggedIn = true;
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,10 +11,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool loggedIn = false;
+
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {});
+    WidgetsBinding.instance.addPostFrameCallback((_) => load());
+  }
+
+  load() async {
+    loggedIn = await hasAuth();
+    setState(() {});
+  }
+
+  signIn() async {
+    await signInWithGoogle();
+    load();
+  }
+
+  logout() async {
+    await signOutGoogle();
+    load();
   }
 
   @override
@@ -48,44 +64,36 @@ class _HomePageState extends State<HomePage> {
               centerTitle: true,
               expandedHeight: kAppbarHeight,
               flexibleSpace: AppBarContent(commitmentsCount: commitmentsCount),
-              //TODO check if user is logged and show icons accordingly
-              actions: loggedIn == true
-                  ? [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pushNamed('/page2');
-                        },
-                        icon: Icon(Icons.account_circle),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            loggedIn = false;
-                          });
-                          //logout if logged in
-                          //TODO implement logout
-                        },
-                        icon: Icon(
-                          Icons.exit_to_app,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ]
-                  : [
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            loggedIn = true;
-                          });
-                          //TODO implement signin
-                        },
-                        child: Container(
-                          height: 30.0,
-                          width: 30,
-                          child: Image.asset("images/google-logo.png"),
-                        ),
-                      ),
-                    ]),
+              actions: [
+                if (loggedIn)
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed('/page2');
+                    },
+                    icon: Icon(Icons.account_circle),
+                  ),
+                if (loggedIn)
+                  IconButton(
+                    onPressed: () {
+                      logout();
+                    },
+                    icon: Icon(
+                      Icons.exit_to_app,
+                      color: Colors.green,
+                    ),
+                  ),
+                if (!loggedIn)
+                  InkWell(
+                    onTap: () {
+                      signIn();
+                    },
+                    child: Container(
+                      height: 30.0,
+                      width: 30,
+                      child: Image.asset("images/google-logo.png"),
+                    ),
+                  ),
+              ]),
           SliverList(
             delegate: SliverChildListDelegate(
               <Widget>[
