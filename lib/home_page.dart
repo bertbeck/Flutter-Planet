@@ -6,11 +6,21 @@ import 'constants.dart';
 
 bool loggedIn = true;
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {});
+  }
+
   @override
   Widget build(BuildContext context) {
     int commitmentsCount = 256;
-
     return Scaffold(
       backgroundColor: Colors.white,
 //      drawer: mainDrawer(context),
@@ -49,6 +59,9 @@ class HomePage extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {
+                          setState(() {
+                            loggedIn = false;
+                          });
                           //logout if logged in
                           //TODO implement logout
                         },
@@ -61,6 +74,9 @@ class HomePage extends StatelessWidget {
                   : [
                       InkWell(
                         onTap: () {
+                          setState(() {
+                            loggedIn = true;
+                          });
                           //TODO implement signin
                         },
                         child: Container(

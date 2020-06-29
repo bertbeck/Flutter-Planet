@@ -110,7 +110,7 @@ class _Page3State extends State<Page3> {
                   'Add',
                   style: TextStyle(color: Colors.white),
                 ),
-                color: Colors.black,
+                color: Colors.green,
               )
             ],
           ),
