@@ -3,6 +3,7 @@ import 'package:flutter_planet/widgets/ScrollingListview.dart';
 import 'package:marquee/marquee.dart';
 
 import './data.dart';
+import 'constants.dart';
 
 const kAppMessage = //"";
     "Welcome to Flutter Planet - the app that commits you to save the planet! Please make a commitment and share with the world!";
@@ -10,6 +11,7 @@ const kAppMessage = //"";
 const kAppbarHeight = 350.0;
 const kHeaderStyle = TextStyle(color: kTextColour, fontSize: 20.0);
 const kTextColour = Color.fromARGB(230, 10, 32, 47);
+bool loggedIn = false;
 
 class HomePage extends StatelessWidget {
 
@@ -36,26 +38,46 @@ Jignesh Patel, India, commits to eating more local food and shopping for local g
   final List<DataRow> userTableRows = commitmentsByUser.map((e) {
     return DataRow(
       cells: [
-        DataCell(Text(e["name"]), onTap: () {
+        DataCell(
+            Text(
+              e["name"],
+              style: kDataCellStyle,
+            ), onTap: () {
           //Page2(e["name"])
         }),
-        DataCell(Text(e["location"])),
-        DataCell(Text(e["commit"]))
+        DataCell(Text(
+          e["location"],
+          style: kDataCellStyle,
+        )),
+        DataCell(Text(
+          e["commit"],
+          style: kDataCellStyle,
+        ))
       ],
     );
   }).toList();
   final List<DataRow> commitmentTableRows = commitmentsByTag.map((e) {
     return DataRow(
       cells: [
-        DataCell(Text(e["commit"])),
-        DataCell(Text(e["tag"])),
-        DataCell(Text(e["count"].toString()))
+        DataCell(Text(
+          e["commit"],
+          style: kDataCellStyle,
+        )),
+        DataCell(Text(
+          e["tag"],
+          style: kDataCellStyle,
+        )),
+        DataCell(Text(
+          e["count"].toString(),
+          style: kDataCellStyle,
+        ))
       ],
     );
   }).toList();
   @override
   Widget build(BuildContext context) {
     int commitmentsCount = 256;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -82,6 +104,19 @@ Jignesh Patel, India, commits to eating more local food and shopping for local g
             centerTitle: true,
             expandedHeight: kAppbarHeight,
             flexibleSpace: AppBarContent(commitmentsCount: commitmentsCount),
+            actions: loggedIn == true
+                ? [
+                    IconButton(
+                      onPressed: () {
+                        //logout if logged in
+                      },
+                      icon: Icon(
+                        Icons.exit_to_app,
+                        color: Colors.green,
+                      ),
+                    )
+                  ]
+                : null,
           ),
           SliverList(
             delegate: SliverChildListDelegate(
@@ -201,7 +236,7 @@ class AppBarContent extends StatelessWidget {
                   image: AssetImage("./images/planet.jpg"),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                      Color.fromRGBO(255, 255, 255, 0.4), BlendMode.lighten),
+                      Color.fromRGBO(255, 255, 255, 0.7), BlendMode.lighten),
                 ),
               ),
               child: Padding(
