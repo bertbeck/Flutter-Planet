@@ -1,15 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_planet/widgets/ScrollingListview.dart';
+import 'package:marquee/marquee.dart';
 
 import './data.dart';
 
-const kAppMessage =
-    "Welcome to Flutter Planet - the app that commits to save the planet! Please make a commitment and share with the world!";
+const kAppMessage = //"";
+    "Welcome to Flutter Planet - the app that commits you to save the planet! Please make a commitment and share with the world!";
 
 const kAppbarHeight = 350.0;
 const kHeaderStyle = TextStyle(color: kTextColour, fontSize: 20.0);
 const kTextColour = Color.fromARGB(230, 10, 32, 47);
 
 class HomePage extends StatelessWidget {
+
+  String commiterListxx = '''
+Bert B, Chicago IL USA, commits to planting a tree\n
+Watsa Ch, Lampang Thailand, commits to not using plastic bags\n
+Sterling W, Boulder CO USA, commits to ending racism\n
+Shivani Gupta India, commits to helping older people\n
+Ashita Gupta, India, commits to using electric vehicles\n
+Anurag Dalmia India, commits to more efficient software to reduce cpu power\n
+Jignesh Patel, India, commits to eating more local food and shopping for local goods\n
+  ''';
+
+    List<String> commiterList = [
+"Bert B from Chicago IL USA, commits to:\n   planting a tree",
+"Watsa Ch from Lampang Thailand commits to:\n   not using plastic bags",
+"Sterling W from Boulder CO USA commits to:\n  ending racism",
+"Shivani from Gupta India commits to:\n   helping older people",
+"Ashita Gupta from India commits to:\n   using electric vehicles",
+"Anurag Dalmia from India commits to:\n   more efficient software to reduce cpu power",
+"Jignesh Patel from India commits to:\n   eating more local food and shopping for local goods"
+    ];
+
   final List<DataRow> userTableRows = commitmentsByUser.map((e) {
     return DataRow(
       cells: [
@@ -37,19 +60,20 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: <Widget>[
+
           SliverAppBar(
             backgroundColor: Colors.white,
             title: Text(
               "Flutter Planet",
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: kTextColour,
+                color: Colors.green[500],
                 fontSize: 40.0,
                 letterSpacing: 2.0,
                 shadows: List.filled(
                     1,
                     Shadow(
-                        color: Colors.blueGrey[900],
+                        color: Colors.white,
                         blurRadius: 10.0,
                         offset: Offset(2, 3))),
               ),
@@ -62,6 +86,31 @@ class HomePage extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate(
               <Widget>[
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    Text(
+                      kAppMessage,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.green[900], //kTextColour,
+                          wordSpacing: 2.0,
+                          fontWeight: FontWeight.w400),
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ), 
+                        RaisedButton(
+                            onPressed: () {},
+                            child: Text(
+                              "Google Login",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            color: Color.fromRGBO(37, 122, 20, 1)),
+
+ScrollingListview(commiterList),                            
+                                                       
                 //Data table name wise
                 Container(
                   margin: EdgeInsets.only(top: 20.0),
@@ -146,6 +195,7 @@ class AppBarContent extends StatelessWidget {
           opacity: opacity,
           child: FlexibleSpaceBar(
             background: Container(
+              height: 800,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("./images/planet.jpg"),
@@ -155,52 +205,53 @@ class AppBarContent extends StatelessWidget {
                 ),
               ),
               child: Padding(
-                padding: EdgeInsets.only(top: 100.0),
+                padding: EdgeInsets.only(top: 55.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Text(
-                      "$commitmentsCount Total Commitments",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: kTextColour,
-                        fontSize: opacity * 30.0,
-                      ),
-                    ),
+
                     SizedBox(
-                      height: 20.0,
+                      height: 220.0,
                     ),
-                    Text(
-                      kAppMessage,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: opacity * 23.0,
-                          color: kTextColour,
-                          wordSpacing: 2.0,
-                          fontWeight: FontWeight.w400),
-                    ),
+                    // Text(
+                    //   kAppMessage,
+                    //   textAlign: TextAlign.center,
+                    //   style: TextStyle(
+                    //       fontSize: opacity * 23.0,
+                    //       color: Colors.blue[600], //kTextColour,
+                    //       wordSpacing: 2.0,
+                    //       fontWeight: FontWeight.w400),
+                    // ),
                     SizedBox(
                       height: 20.0,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          "Please Login   ",
-                          style: TextStyle(
-                              color: kTextColour,
-                              fontSize: opacity * 15.0,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        RaisedButton(
-                            onPressed: () {},
-                            child: Text(
-                              "Google",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            color: Color.fromRGBO(37, 122, 20, opacity)),
+                        // Text(
+                        //   "Please Login   ",
+                        //   style: TextStyle(
+                        //       color: kTextColour,
+                        //       fontSize: opacity * 15.0,
+                        //       fontWeight: FontWeight.bold),
+                        // ),
+                      //   RaisedButton(
+                      //       onPressed: () {},
+                      //       child: Text(
+                      //         "Google Login",
+                      //         style: TextStyle(color: Colors.white),
+                      //       ),
+                      //       color: Color.fromRGBO(37, 122, 20, opacity)),
                       ],
                     ),
+                    Text(
+                      "$commitmentsCount Total Commitments",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.blue[800], //kTextColour,
+                        fontSize: opacity * 20.0,
+                      ),
+                    ),                    
                   ],
                 ),
               ),
