@@ -281,7 +281,7 @@ class CommitmentTable extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) return LinearProgressIndicator();
         return DataTable(
-          columnSpacing: 37.0,
+          columnSpacing: 12.0,
           columns: [
             DataColumn(
               label: Text(
