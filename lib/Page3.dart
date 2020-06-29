@@ -15,7 +15,7 @@ class _Page3State extends State<Page3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Page 3'),
+        title: Text('Commitments'),
       ),
       body: SingleChildScrollView(
         child: Column(

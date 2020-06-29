@@ -80,10 +80,12 @@ Jignesh Patel, India, commits to eating more local food and shopping for local g
 
     return Scaffold(
       backgroundColor: Colors.white,
+      drawer: mainDrawer(context),
       body: CustomScrollView(
         slivers: <Widget>[
 
           SliverAppBar(
+            iconTheme: new IconThemeData(color: Colors.green),
             backgroundColor: Colors.white,
             title: Text(
               "Flutter Planet",
@@ -224,6 +226,54 @@ ScrollingListview(commiterList),
       ),
     );
   }
+
+  Drawer mainDrawer(BuildContext context) {
+
+    return
+Drawer(
+  // Add a ListView to the drawer. This ensures the user can scroll
+  // through the options in the drawer if there isn't enough vertical
+  // space to fit everything.
+  child: ListView(
+    // Important: Remove any padding from the ListView.
+    padding: EdgeInsets.zero,
+    children: <Widget>[
+      DrawerHeader(
+        child: Text('Flutter Planet'),
+        decoration: BoxDecoration(
+          color: Colors.green[200],
+        ),
+      ),
+      ListTile(
+        title: Text('Profile'),
+        onTap: () {
+            Navigator.pushNamed(context, '/first');
+        },
+      ),
+      ListTile(
+        title: Text('Committments'),
+        onTap: () {
+            Navigator.pushNamed(context, '/page3');
+        },
+      ),
+      ListTile(
+        title: Text('Post Video'),
+        onTap: () {
+          // Update the state of the app.
+          // ...
+        },
+      ),    
+      ListTile(
+        title: Text('Logout'),
+        onTap: () {
+          // Update the state of the app.
+          // ...
+        },
+      ),          
+    ],
+  ),
+);    
+  }
 }
 
 class AppBarContent extends StatelessWidget {
@@ -240,13 +290,13 @@ class AppBarContent extends StatelessWidget {
           opacity: opacity,
           child: FlexibleSpaceBar(
             background: Container(
-              height: 800,
+              //height: 800,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("./images/planet.jpg"),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                      Color.fromRGBO(255, 255, 255, 0.7), BlendMode.lighten),
+                      Color.fromRGBO(255, 255, 255, 0.7), BlendMode.softLight),
                 ),
               ),
               child: Padding(
