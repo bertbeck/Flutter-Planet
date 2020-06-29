@@ -70,7 +70,13 @@ class _HomePageState extends State<HomePage> {
                     onPressed: () {
                       Navigator.of(context).pushNamed('/page2');
                     },
-                    icon: Icon(Icons.account_circle),
+                    icon: imageUrl != null
+                        ? CircleAvatar(
+                            backgroundImage: NetworkImage(imageUrl),
+                            radius: 17,
+                          )
+                        : Icon(Icons.account_circle),
+                    padding: EdgeInsets.only(left: 10),
                   ),
                 if (loggedIn)
                   IconButton(
