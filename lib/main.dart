@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_planet/home_page.dart';
+import 'package:flutter_planet/page2/page2.dart';
 
 import 'Page3.dart';
 import 'Page4.dart';
@@ -23,17 +24,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-  initialRoute: '/',
-  routes: {
-    // When navigating to the "/" route, build the FirstScreen widget.
-    '/': (context) => HomePage(),
-    '/first': (context) => FirstScreen(),
-    '/login': (context) => LoginPage(),
-    '/page3': (context) => Page3(),
-    '/page4': (context) => Page4(),
-    '/page5': (context) => Page5(),
-  
-  },      
+      initialRoute: '/',
+      routes: {
+        // When navigating to the "/" route, build the FirstScreen widget.
+        '/': (context) => HomePage(),
+        '/first': (context) => FirstScreen(),
+        '/login': (context) => LoginPage(),
+        '/page2': (context) => Page2(),
+        '/page3': (context) => Page3(),
+        '/page4': (context) => Page4(),
+        '/page5': (context) => Page5(),
+      },
       //home: HomePage(),
     );
   }
